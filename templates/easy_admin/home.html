@@ -4,6 +4,7 @@
 {% block content %}
     <div class="container">
         <h1 class="h2 fw-bolder text-success">Department of {{ user.department|dept_name }}</h1>
+        <a href="{% url 'logout' %}" class="btn btn-danger float-end">Logout</a>
         {% link_buttons_group buttons %}
         <h2>Payments</h2>
         {% for payment in payments %}

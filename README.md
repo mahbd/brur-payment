@@ -4,6 +4,20 @@ like. So, I decided to experiment if it is possible to make a better system.
 This website is just for demo, not for actual usage.
 ## Live website
 https://brur-pay.herokuapp.com/ 
+
+## Password for departments
+<p>Password for all department is same. It is <code>1234</code></p>
+<p>Department usernames are: </p>
+<ol>
+<li>cse</li>
+<li>eee</li>
+<li>eng</li>
+<li>math</li>
+<li>bengali</li>
+<li>chemistry</li>
+</ol>
+<p>NB: Not all username are included</p>
+
 ## Features
 <ol>
 <li>Accept payment from students</li>
@@ -27,19 +41,6 @@ There is no known bug. If you found, please report.
 <li>Improved User Interface</li>
 <li>Bkash payment gateway integration.</li>
 </ul>
-
-## Password for departments
-<p>Password for all department is same. It is <code>1234</code></p>
-<p>Department usernames are: </p>
-<ol>
-<li>cse</li>
-<li>eee</li>
-<li>eng</li>
-<li>math</li>
-<li>bengali</li>
-<li>chemistry</li>
-</ol>
-<p>NB: Not all departments are included</p>
 
 NB: Currently I'm busy with my examination. As a result I couldn't simulation 
 many circumstances. I'll try to make this project better as soon as I'm free.
