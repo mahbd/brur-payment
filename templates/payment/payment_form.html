@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% block content %}
+    <h1 class="text-center display-4 text-success">Payment System</h1>
+    <div class="container">
+        {% for key, value in form.errors.items %}
+            <div class="alert alert-danger">{{ key }}: {{ value }}</div>
+        {% endfor %}
+        <form method="post" action="{% url 'payment' %}">
+            {% csrf_token %}
+            {% single_field form.name %}
+            {% single_field form.email %}
+            <div class="alert alert-info">An email will be sent with pay code</div>
+            {% double_field form.roll form.registration_number %}
+            {% double_field form.department form.semester %}
+            {% double_field form.method form.account %}
+            {% double_field form.amount form.transaction_id %}
+            <button class="btn btn-success">Submit</button>
+        </form>
+    </div>
+{% endblock content %}

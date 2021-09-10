@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Success{% endblock title %}
+{% block content %}
+    <div class="container">
+        <p class="text-success">Your Payment is successful. It will be reviewed by your department and you will be
+            informed about this.</p>
+        <p class="h5 text-danger">Please save payment code for future. It is very important</p>
+        <p class="h2 text-success">Payment Code: {{ pay_code }}</p>
+        <p>An email is sent with other information. Please don't forget to check your spam.</p>
+    </div>
+{% endblock content %}

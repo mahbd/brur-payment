@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}BRUR Online Payment{% endblock title %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center text-success display-4">BRUR Online Form Fill-up Payment System</h1>
+        <h2>How to pay</h2>
+        <div>
+            <h3 class="text-success">Pay via Nagad</h3>
+            <ol>
+                <li>Go to your Nagad Mobile Menu by dialing *167#</li>
+                <li>Press 4 from the menu to select payment</li>
+                <li>Enter 017XXXXXXXXX</li>
+                <li>Enter the fee given on notice board</li>
+                <li>Enter your Roll as reference</li>
+                <li>Now enter your Nagad Mobile Menu PIN to confirm</li>
+                <li>Note down your Transaction id and <a href="{% url 'payment' %}?method=nagad">click here</a></li>
+            </ol>
+        </div>
+        <div>
+            <h3 class="text-success">Pay via Bkash</h3>
+            <ol>
+                <li>Go to your bKash Mobile Menu by dialing *247#</li>
+                <li>Choose “Payment”</li>
+                <li>Enter 017XXXXXXXXX</li>
+                <li>Enter the fee given on notice board</li>
+                <li>Enter your Roll as reference</li>
+                <li>Enter 1 as counter Number</li>
+                <li>Now enter your bKash Mobile Menu PIN to confirm</li>
+                <li>Note down your Transaction id and <a href="{% url 'payment' %}?method=bkash">click here</a></li>
+            </ol>
+        </div>
+        <div>
+            <h3 class="text-success">Pay via Rocket</h3>
+            <ol>
+                <li>Go to your Rocket Mobile Menu by dialing *322#</li>
+                <li>Enter 1 to choose “Payment”</li>
+                <li>Enter XXX as BRUR biller id</li>
+                <li>Enter your Roll as bill number</li>
+                <li>Enter the fee given on notice board</li>
+                <li>Now enter your bKash Mobile Menu PIN to confirm</li>
+                <li>Note down your Transaction id and <a href="{% url 'payment' %}?method=rocket">click here</a></li>
+            </ol>
+        </div>
+        <h2>Have you paid wrong amount?</h2>
+        <ul>
+            <li><p>If you paid more than amount required please contact your department</p></li>
+            <li>
+                <p>If you paid less than the amount required please rest amount using
+                    <span class="text-danger">same method</span> and <span class="text-danger">same account</span>.
+                    Also don't forget to provide your roll number as reference. Make a note of your new transaction id
+                    and <a href="{% url 'pay_code' %}">click here</a>
+                </p>
+            </li>
+        </ul>
+        <h2>Have you provided wrong information?</h2>
+        <p>Please <a href="{% url 'pay_code' %}">click here</a> to update your information</p>
+    </div>
+{% endblock content %}

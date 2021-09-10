@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <label for="pay_code">
+            Enter your payment code:
+        </label>
+        <input id="pay_code" type="number" class="form-control">
+        <button class="btn btn-success" onclick="gen_url_edit()">Edit Payment</button>
+        <a class="float-end" href="{% url 'recover_code' %}">Forgot Payment code</a>
+    </div>
+    <script>
+      function gen_url_edit() {
+        window.location = `${window.location.origin}/edit-payment/${document.getElementById('pay_code').value}/`
+      }
+    </script>
+{% endblock content %}

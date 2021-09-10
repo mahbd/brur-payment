@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% block content %}
+    <h1 class="text-center display-4 text-success">Repay System</h1>
+    <div class="container">
+    {% for key, value in form.errors.items %}
+            <div class="alert alert-danger">{{ key }}: {{ value }}</div>
+        {% endfor %}
+        <form method="post" action="{% url 'edit_payment' repay.pay_code %}">
+            {% csrf_token %}
+            {% single_field form.name %}
+            {% single_field form.email %}
+            {% double_field form.roll form.registration_number %}
+            {% double_field form.department form.semester %}
+            {% double_field form.method form.account %}
+            {% double_field form.amount form.transaction_id %}
+            {% single_field form.extra_transactions %}
+            <div class="alert alert-info">Separate multiple transaction id using comma</div>
+            <button class="btn btn-success">Submit</button>
+        </form>
+    </div>
+{% endblock content %}

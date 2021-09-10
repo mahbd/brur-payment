@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% block title %}Admin{% endblock title %}
+{% block content %}
+    <div class="container">
+        <h1 class="h2 fw-bolder text-success">Department of {{ user.department|dept_name }}</h1>
+        {% link_buttons_group buttons %}
+        <h2>Payments</h2>
+        {% for payment in payments %}
+            <div class="form-control">
+                <h3 class="{% if payment.verified %}text-success{% elif payment.verified == False %}text-danger{% else %}text-info{% endif %}">{{ payment.name }}</h3>
+                <div class="row">
+                    <div class="col-sm">Roll: {{ payment.roll }}</div>
+                    <div class="col-sm">Registration: {{ payment.registration_number }}</div>
+                </div>
+                <div>Email: {{ payment.email }}</div>
+                <div class="row">
+                    <div class="col-sm">Method: {{ payment.method }}</div>
+                    <div class="col-sm">Account: {{ payment.account }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">TrxID: {{ payment.account }}</div>
+                    <div class="col-sm">Extra TrxID: {{ payment.amount }}</div>
+                </div>
+                <p>Created on: {{ payment.created_at }}</p>
+                {% if payment.verified %}
+                    <p class="h5 text-success">Payment verified</p>
+                {% elif payment.verified == False %}
+                    <p class="h5 text-danger">Denied</p>
+                {% else %}
+                    <p class="h5 text-info">Pending verification</p>
+                {% endif %}
+                <a href="{% url 'ea:accept' payment.id semester %}" class="btn btn-success d-inline">Accept</a>
+                <a href="{% url 'ea:deny' payment.id semester %}" class="d-inline btn btn-danger">Deny</a>
+            </div>
+            <br>
+        {% empty %}
+            <p class="text-danger h3">No payments made</p>
+        {% endfor %}
+    </div>
+{% endblock content %}
