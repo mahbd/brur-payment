@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
-import django_heroku
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-cev@ph54au^*2-h19-*-tyddt8y2z)it*#e=1)vb)a)quzaanp'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,11 +84,11 @@ WSGI_APPLICATION = 'BRUR_payment.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'brur',
-        'USER': 'brur_db',
-        'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT')
     }
 }
 
@@ -142,5 +144,3 @@ EMAIL_HOST_USER = os.environ.get('EMAIL')  #
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')  #
 EMAIL_PORT = 587  #
 EMAIL_USE_TLS = True  #
-
-django_heroku.settings(locals())
